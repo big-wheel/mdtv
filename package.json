@@ -6,15 +6,27 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "bin": "./bin/mdtv.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/big-wheel/mdtv.git"
   },
-  "keywords": ["imcuttle", "mdtv"],
+  "keywords": [
+    "imcuttle",
+    "mdtv"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/big-wheel/mdtv/issues"
   },
-  "homepage": "https://github.com/big-wheel/mdtv#readme"
+  "homepage": "https://github.com/big-wheel/mdtv#readme",
+  "dependencies": {
+    "babel-eslint": "^8.2.1",
+    "chalk": "^2.3.0",
+    "commander": "^2.13.0",
+    "eslint": "^4.16.0"
+  }
 }
