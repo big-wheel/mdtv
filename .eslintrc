@@ -2,12 +2,11 @@
   "parser": "babel-eslint",
   "extends": [
     "eslint:recommended"
-//    "plugin:react/recommended"
   ],
   "rules": {
     "indent": ["error", 2],
     "quotes": ["error", "single"],
-    "semi": ["error", "never"],
+    "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],
     "no-cond-assign": ["error", "always"],
     "no-console": "off",
@@ -18,15 +17,14 @@
     "no-use-before-define": ["error"],
     "no-undef": ["error"],
     "array-bracket-spacing": ["error", "never"],
-    "object-curly-spacing": ["error", "always"]
-//    "react/prop-types": [ true, { "ignore": ["children"] }]
+    "object-curly-spacing": ["error", "always"],
+    "no-unused-vars": [2, {"vars": "local", "args": "after-used"}]
   },
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
-//      "jsx": true
     }
   },
   "env": {
