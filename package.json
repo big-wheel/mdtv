@@ -27,6 +27,10 @@
     "babel-eslint": "^8.2.1",
     "chalk": "^2.3.0",
     "commander": "^2.13.0",
-    "eslint": "^4.16.0"
+    "eslint": "^4.16.0",
+    "express": "^4.16.2",
+    "express-react-views": "^0.10.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

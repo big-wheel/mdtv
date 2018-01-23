@@ -1,13 +1,25 @@
 #!/usr/bin/env node 
 
-// var chalk = require('chalk');
+var cp = require('child_process');
+var chalk = require('chalk');
 // var path = require('path');
 var commander = require('commander');
-var packageInfo = require('../package.json');
+var pck = require('../package.json');
+var log = console.log;
+
+log(chalk.yellow(`mdtv ${pck.version} running`));
 
 commander
-  .version(packageInfo.version);
+  .version(pck.version)
+  .option('-v, --version');
 
-commander.command('');
+commander.command('start <mdName>')
+  .description('start a mdtv application')
+  .option('-p, --port [port]', 'set the port')
+  .action(function(mdName, options) {
+    log(chalk.yellow('mdtv start!'));
+    require('./mdtv-start')(mdName, options.port);
+  });
 
+commander.parse(process.argv);
 
