@@ -1,6 +1,6 @@
 #!/usr/bin/env node 
 
-var cp = require('child_process');
+// var cp = require('child_process');
 var chalk = require('chalk');
 // var path = require('path');
 var commander = require('commander');
