@@ -6,9 +6,7 @@ var React = require('react');
 class FileView extends React.Component {
   render() {
     var cp = this.props.cp;  //current path
-    return <Base><div>
-      <div class="tip">
-        <a className="btn" href="/fileView">FileView</a>&nbsp;&nbsp; under root directory</div>
+    return <Base>
       <table>
         <tr>
           <th>name</th>
@@ -28,7 +26,7 @@ class FileView extends React.Component {
           </tr>
         })}
       </table>
-    </div></Base>;
+    </Base>;
   }
 }
 

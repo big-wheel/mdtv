@@ -6,7 +6,8 @@ var log = console.log;
 var chalk = require('chalk');
 
 exports.index = function(req, res){
-  res.render('index', { name: 'John' });
+  // res.render('index', { name: 'John' });
+  res.redirect('/fileView');
 };
 exports.fileView = function(req, res) {
   // 判断是文件夹还是文件
@@ -26,7 +27,7 @@ exports.fileView = function(req, res) {
   } else {
     console.log(path.resolve(url.slice(1)));
     // res.sendFile(path.resolve(url.slice(1)));
-    res.download(path.resolve(url.slice(1)));
-    // res.redirect(url);
+    // res.download(path.resolve(url.slice(1)));
+    res.redirect(url);
   }
 };
