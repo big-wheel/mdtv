@@ -1,23 +1,34 @@
+var Base = require('./base.jsx');
+
 var React = require('react');
+
 
 class FileView extends React.Component {
   render() {
-    return <div>
+    var cp = this.props.cp;  //current path
+    return <Base><div>
+      <div class="tip">
+        <a className="btn" href="/fileView">FileView</a>&nbsp;&nbsp; under root directory</div>
       <table>
         <tr>
           <th>name</th>
           <th>size</th>
           <th>operate</th>
         </tr>
+        { this.props.files.map((item,i) => {
+          return <tr key={i}>
+            <td>
+            {item.dir ? (<span className="iconfont">&#xe622;</span>) : (<span className="iconfont">&#xe62b;</span>)}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href={`${cp}/${item.name}`}>
+              {item.name}
+            </a></td>
+            <td>{item.size}</td>  
+            <td>{item.dir ? '-' : (<a href="" className="iconfont">&#xe67b;</a>)}</td>
+          </tr>
+        })}
       </table>
-      { this.props.files.map((item) => {
-        return <tr>
-          <td>{item.dir && (<span></span>)}item.name</td>
-          <td>item.size</td>
-          <td><a href="">download</a></td>
-        </tr>
-      })}
-    </div>;
+    </div></Base>;
   }
 }
 

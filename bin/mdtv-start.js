@@ -1,10 +1,11 @@
 var express = require('express');
 var chalk = require('chalk');
-var pcover = require('../lib/tools').pcover;
+var path = require('path');
 var log = console.log;
 var app = express();
+var route = require('./routes');
 
-app.set('views', process.cwd() + pcover('/public/template'));
+app.set('views', path.resolve('public/template'));
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
@@ -15,12 +16,10 @@ var logReqInfo = function(req, res, next) {
 };
 
 module.exports = function (fileName, port) {
-  // log(chalk.red(__dirname));
-  // log(chalk.red(__filename));
-  // log(chalk.red(process.cwd()));
   app.use(express.static('public'));
   app.use(logReqInfo);
-  app.get('/', require('./routes').index);
+  app.get('/', route.index);
+  app.get(/^\/fileView/, route.fileView);
   app.listen(port, function(){
     log(chalk.yellow(`mdtv listening on port ${port}`));
   });
