@@ -35,7 +35,13 @@
     "express": "^4.16.2",
     "express-react-views": "^0.10.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "remark": "^9.0.0",
+    "remark-align": "^1.0.10",
+    "remark-autolink-headings": "^5.0.0",
+    "remark-highlight.js": "^5.0.0",
+    "remark-html": "^7.0.0",
+    "remark-preset-lint-markdown-style-guide": "^2.1.1"
   },
   "devDependencies": {}
 }
