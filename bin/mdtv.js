@@ -7,17 +7,20 @@ var commander = require('commander');
 var pck = require('../package.json');
 var log = console.log;
 
-log(chalk.yellow(`mdtv ${pck.version} running`));
+
 
 commander
   .version(pck.version)
   .option('-v, --version')
-  .option('-p, --port <port>', 'set the port');
+  .option('-m, --mdName <mdName>')
+  .option('-p, --port <port>', 'set the port')
+  .parse(process.argv);
 
+log(chalk.yellow(`mdtv ${pck.version} running`));
 
 let port = commander.port || 8089;
 let mdName = commander.mdName;
-log(chalk.yellow('mdtv start!'));
+
 require('./mdtv-start')(mdName, port);
 
 // commander.command('start [mdName]')
@@ -29,6 +32,4 @@ require('./mdtv-start')(mdName, port);
 //     log(chalk.yellow('mdtv start!'));
 //     require('./mdtv-start')(mdName, port);
 //   });
-
-commander.parse(process.argv);
 

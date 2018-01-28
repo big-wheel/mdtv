@@ -11,7 +11,17 @@ var chalk = require('chalk');
 
 exports.index = function(req, res){
   // res.render('index', { name: 'John' });
-  res.redirect('/fileView');
+  fs.readdir(path.resolve(''), function (err, files) {
+    if(err){
+      log(chalk.red(err));
+    } else if (files.indexOf('index.html') >= 0) {
+      res.sendFile(path.resolve('index.html'));
+    } else if (files.indexOf('index.md') >= 0 ){
+      res.redirect('/index.md');
+    } else {
+      res.redirect('/fileView');
+    }
+  });
 };
 exports.fileView = function(req, res) {
   // 判断是文件夹还是文件
