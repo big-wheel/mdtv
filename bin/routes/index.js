@@ -9,15 +9,6 @@ var fileViewByPath = require('../../lib/tools').fileViewByPath;
 var log = console.log;
 var chalk = require('chalk');
 
-// var pre = '<html>' + 
-// + '<head>'
-// + '<link rel="stylesheet" href="/css/index.css" />'
-// + '</head>'
-// + '<body>';
-// var nextHtml = '</body>'
-// + '</html>';
-
-
 exports.index = function(req, res){
   // res.render('index', { name: 'John' });
   res.redirect('/fileView');
@@ -25,6 +16,7 @@ exports.index = function(req, res){
 exports.fileView = function(req, res) {
   // 判断是文件夹还是文件
   let url = req.url.slice(9);
+  // url = decodeURI(url);
   let abPath = path.resolve(url.slice(1));
   log(chalk.blue('request path: ', req.url));
   log(chalk.blue('path: ', url));

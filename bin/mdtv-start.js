@@ -12,7 +12,8 @@ app.engine('jsx', require('express-react-views').createEngine());
 
 // middleware
 function logReqInfo(req, res, next) {
-  log(`Request for ${req.url} at ${new Date().toLocaleTimeString()}`);
+  log(`Request for ${decodeURI(req.url)} at ${new Date().toLocaleTimeString()}`);
+  req.url = decodeURI(req.url);
   next();
 }
 
