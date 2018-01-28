@@ -1,9 +1,22 @@
 // var pcover = require('../../lib/tools').pcover;
 var fs = require('fs');
 var path = require('path');
+var remark = require('remark');
+// var styleGuide = require('remark-preset-lint-markdown-style-guide');
+var html = require('remark-html');
+var highlight = require('remark-highlight.js');
 var fileViewByPath = require('../../lib/tools').fileViewByPath;
 var log = console.log;
 var chalk = require('chalk');
+
+// var pre = '<html>' + 
+// + '<head>'
+// + '<link rel="stylesheet" href="/css/index.css" />'
+// + '</head>'
+// + '<body>';
+// var nextHtml = '</body>'
+// + '</html>';
+
 
 exports.index = function(req, res){
   // res.render('index', { name: 'John' });
@@ -29,5 +42,29 @@ exports.fileView = function(req, res) {
     // res.sendFile(path.resolve(url.slice(1)));
     // res.download(path.resolve(url.slice(1)));
     res.redirect(url);
+  }
+};
+
+exports.readFile = function (req, res, next) {
+  var abp = path.resolve(req.path.slice(1));
+  log(chalk.blue('file path: ', abp));
+  log(fs.existsSync(abp));
+  if(fs.existsSync(abp) && fs.lstatSync(abp).isFile()) {
+    fs.readFile(abp, (err, data) => {
+      if(abp.match(/\.md$/)) {
+        remark()
+          .use(html)
+          .use(highlight)
+          .process(data, function (err, file) {
+            log(chalk.yellow('md render'));
+            res.status(200).send('<link rel="stylesheet" href="/css/mdRender.css" />' + file.contents);
+          });
+      } else {
+        var d = '<pre>' + data + '</pre>';
+        res.status(200).send(d);
+      }
+    });
+  } else {
+    next();
   }
 };
