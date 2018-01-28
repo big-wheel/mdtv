@@ -2,7 +2,6 @@
 
 body{
   padding: 20px 8%;
-  border-radius: 5px;
 }
 h1 {
   border-bottom: 1px solid #dfe2e5;
@@ -21,7 +20,13 @@ table td, th {
 table tr:nth-child(2n) {
   background-color: #f6f8fa;
 }
-
+p code{
+  background-color: #f6f8fa;
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
 /* 代码高亮 */
 .hljs {
@@ -30,6 +35,8 @@ table tr:nth-child(2n) {
   padding: 0.5em;
   color: #abb2bf;
   background: #282c34;
+  padding: 15px;
+  border-radius:5px;
 }
 
 .hljs-comment,
