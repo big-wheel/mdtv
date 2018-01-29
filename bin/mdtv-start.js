@@ -24,6 +24,7 @@ module.exports = function (fileName, port) {
   // router
   app.get('/', route.index);
   app.get(/^\/fileView/, route.fileView);
+  app.get(/\/__download$/, route.download);
   app.all('/*', route.readFile);
 
   app.listen(port, function(){

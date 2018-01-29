@@ -22,7 +22,7 @@ class FileView extends React.Component {
               {item.name}
             </a></td>
             <td>{item.size}</td>  
-            <td>{item.dir ? '-' : (<a href="" className="iconfont">&#xe67b;</a>)}</td>
+            <td>{item.dir ? '-' : (<a href={`${cp.slice(10)}/${item.name}/__download`} className="iconfont">&#xe67b;</a>)}</td>
           </tr>
         })}
       </table>
