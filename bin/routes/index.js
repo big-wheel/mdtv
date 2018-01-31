@@ -1,7 +1,8 @@
-// var pcover = require('../../lib/tools').pcover;
+var toc = require('../../lib/remark-add-toc');
 var fs = require('fs');
 var path = require('path');
 var remark = require('remark');
+// var toc = require('remark-toc');
 // var styleGuide = require('remark-preset-lint-markdown-style-guide');
 var html = require('remark-html');
 var highlight = require('remark-highlight.js');
@@ -55,10 +56,12 @@ exports.readFile = function (req, res, next) {
     fs.readFile(abp, (err, data) => {
       if(abp.match(/\.md$/)) {
         remark()
+          .use(toc)
           .use(html)
           .use(highlight)
           .process(data, function (err, file) {
             log(chalk.yellow('md render'));
+            log(file);
             res.status(200).send('<link rel="stylesheet" href="/css/mdRender.css" />' + file.contents);
           });
       } else {
