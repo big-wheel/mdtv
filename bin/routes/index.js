@@ -29,9 +29,7 @@ exports.fileView = function(req, res) {
   let url = req.url.slice(9);
   // url = decodeURI(url);
   let abPath = path.resolve(url.slice(1));
-  log(chalk.blue('request path: ', req.url));
   log(chalk.blue('path: ', url));
-  log(chalk.blue('the absolute path of request: ', abPath));
 
   if(fs.lstatSync(abPath).isDirectory()) {
     fileViewByPath(abPath).then((arr) => {
@@ -60,8 +58,6 @@ exports.readFile = function (req, res, next) {
           .use(html)
           .use(highlight)
           .process(data, function (err, file) {
-            log(chalk.yellow('md render'));
-            log(file);
             res.status(200).send('<link rel="stylesheet" href="/css/mdRender.css" />' + file.contents);
           });
       } else {

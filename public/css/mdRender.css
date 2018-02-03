@@ -28,6 +28,49 @@ p code{
   font-size: 16px;
 }
 
+/* toc style */
+
+#toc {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000;
+  top: 20px;
+  border-top: 1px solid #bbb;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#toc + ul {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  line-height: 1em;
+  font-size: 0.8em;
+  top: 71px;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+}
+#toc + ul a {
+  text-decoration: none;
+  line-height: 24px;
+}
+#toc + ul p {
+  margin: 0;
+}
+#toc ,#toc + ul {
+  position: fixed;
+  right: 20px;
+  padding-left: 35px;
+  padding-right: 20px;
+  width: 12%;
+  max-width: 200px;
+  background: rgba(238, 238, 238, 0.5);
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  opacity: 0.8;
+}
+
 /* 代码高亮 */
 .hljs {
   display: block;
