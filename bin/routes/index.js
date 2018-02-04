@@ -72,14 +72,15 @@ exports.readFile = function (req, res, next) {
 
 exports.download = function (req, res) {
   var abp = path.resolve(req.path.slice(1, req.path.length - 11));
-  log(chalk.blue('path: ', req.path.slice(0, req.path.length - 11)));
   log(chalk.blue('down file: ', abp));
   if(fs.existsSync(abp) && fs.lstatSync(abp).isFile()) {
-    res.download(abp,'do', function(err) {
-      log(chalk.red(err));
-      res.send('<p style="color: red">' + err + '</p>');
+    res.download(abp, function(err) {
+      if (err) {
+        log(chalk.red(err));
+        res.send('<p style="color: red">' + err + '</p>');
+      }
     });
   } else {
-    res.status(404).send('<p>can not find file ' + req.path.slice(1, req.path.length -11) + '</p>');
+    res.send('<p>can not find file ' + req.path.slice(1, req.path.length -11) + '</p>');
   }
 };
