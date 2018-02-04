@@ -1,6 +1,6 @@
 {
   "name": "mdtv",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "show markdown as a tv",
   "main": "index.js",
   "scripts": {
