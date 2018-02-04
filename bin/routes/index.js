@@ -74,7 +74,8 @@ exports.download = function (req, res) {
   var abp = path.resolve(req.path.slice(1, req.path.length - 11));
   log(chalk.blue('down file: ', abp));
   if(fs.existsSync(abp) && fs.lstatSync(abp).isFile()) {
-    res.download(abp, function(err) {
+    res.download(abp, path.basename(abp), { dotfiles: 'allow' }, function(err) {
+      log(res.header);
       if (err) {
         log(chalk.red(err));
         res.send('<p style="color: red">' + err + '</p>');
